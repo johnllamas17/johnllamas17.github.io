@@ -44,3 +44,11 @@ img {
   margin: 0 auto;
   border-radius: 10px;
 }
+.project img {
+  width: 80%;           
+  height: auto;        
+  object-fit: contain; 
+  display: block;
+  margin: 10px auto;
+  border: 2px solid purple;
+}
