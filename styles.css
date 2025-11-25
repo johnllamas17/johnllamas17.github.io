@@ -1,54 +1,149 @@
-body 
-{
-    background: rgb(251, 251, 233);
-    font-family: Arial, Helvetica, sans-serif;
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap');
+
+body {
+    background: #1e1f22;         /* deep grey background */
+    color: #e4e4e4;              /* soft off-white text */
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    animation: fadeIn 0.8s ease-in;
 }
-h1 
-{
-    color: rgb(54, 54, 51);
+
+/* Smooth fade animation */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* -----------------------------------------------------------
+   HEADINGS
+----------------------------------------------------------- */
+h1, h2, h3 {
+    color: #ffffff;
     text-align: center;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    font-weight: 600;
 }
-.projects 
-{ 
-    display:flex;
-    flex-wrap:wrap; 
-} /* condensed to save space */
-.project 
-{
-    width: 30%;
-    margin: 10px;
-    padding: 20px 10px;
-    background: white; 
-    border-radius: 25%;
+
+h1 {
+    font-size: 2.6rem;
+    letter-spacing: 1px;
 }
-.project img{
-width: 300px;
-height: 300px;
-margin: 10px;
-border: 2px solid rgb(126, 14, 201); /* choose a color */
-display: block;
-margin: auto;
+
+h2 {
+    font-size: 1.9rem;
+    color: #d7d7d7;
 }
-a { /* change the appearance of ALL links */
-text-decoration: none;
-color: purple;
+
+h3 {
+    font-size: 1.4rem;
+    color: #cfcfcf;
 }
-.project p { /* change the appearance of paragraph tags inside .project divs */
-text-align: center;
-margin: 15px;
+
+/* -----------------------------------------------------------
+   LINK STYLE (Cleaner + subtle glow)
+----------------------------------------------------------- */
+a {
+    color: #78aaff;                  /* soft blue accent */
+    text-decoration: none;
+    font-weight: 500;
+    transition: 0.25s ease;
 }
-img {
-  max-width: 100%;
-  height: auto;
-  display: block;
-  margin: 0 auto;
-  border-radius: 10px;
+
+a:hover {
+    color: #a4c8ff;
+    text-shadow: 0px 0px 6px rgba(120, 170, 255, 0.5);
 }
+
+/* -----------------------------------------------------------
+   PROJECT GRID
+----------------------------------------------------------- */
+.projects {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px;
+    padding: 20px;
+}
+
+/* Individual Project Card */
+.project {
+    width: 300px;
+    background: #2a2b2f;
+    border-radius: 14px;
+    padding: 20px;
+    box-shadow: 0 0 12px rgba(0,0,0,0.3);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    animation: fadeIn 0.8s ease-in;
+}
+
+.project:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.45);
+}
+
+/* -----------------------------------------------------------
+   PROJECT IMAGE
+----------------------------------------------------------- */
 .project img {
-  width: 80%;           
-  height: auto;        
-  object-fit: contain; 
-  display: block;
-  margin: 10px auto;
-  border: 2px solid purple;
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    display: block;
+    margin: 0 auto 12px auto;
+    border: 2px solid #3f6ab4;  /* blue accent */
+    transition: 0.25s ease;
+}
+
+.project img:hover {
+    border-color: #74a2ff;
+}
+
+/* -----------------------------------------------------------
+   PROJECT TEXT
+----------------------------------------------------------- */
+.project p {
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 0;
+    color: #d9d9d9;
+    font-size: 0.95rem;
+}
+
+/* -----------------------------------------------------------
+   GLOBAL IMAGE RULE (for resume preview, etc.)
+----------------------------------------------------------- */
+img {
+    max-width: 100%;
+    display: block;
+    margin: 20px auto;
+    border-radius: 12px;
+}
+
+/* -----------------------------------------------------------
+   CONTACT SECTION
+----------------------------------------------------------- */
+.contact {
+    text-align: center;
+    padding: 30px;
+    font-size: 1.1rem;
+    color: #cfcfcf;
+}
+
+.contact a {
+    font-size: 1.15rem;
+    font-weight: 600;
+}
+
+/* -----------------------------------------------------------
+   FOOTER
+----------------------------------------------------------- */
+footer {
+    text-align: center;
+    padding: 20px;
+    color: #9c9c9c;
+    font-size: 0.9rem;
+    margin-top: 40px;
 }
