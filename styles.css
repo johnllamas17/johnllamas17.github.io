@@ -1,149 +1,148 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap');
 
 body {
-    background: #1e1f22;         /* deep grey background */
-    color: #e4e4e4;              /* soft off-white text */
-    font-family: 'Inter', sans-serif;
+    background: #1e1f22; /* dark grey like ChatGPT */
+    font-family: "Inter", "Segoe UI", Helvetica, Arial, sans-serif;
+    color: #e5e5e5; /* soft off-white */
     margin: 0;
     padding: 0;
+    text-align: center;
     line-height: 1.6;
-    animation: fadeIn 0.8s ease-in;
 }
 
-/* Smooth fade animation */
+/* Smooth fade-in for entire page */
+body {
+    animation: fadeIn 1.2s ease-in-out;
+}
+
 @keyframes fadeIn {
     from { opacity: 0; }
     to { opacity: 1; }
 }
 
-/* -----------------------------------------------------------
-   HEADINGS
------------------------------------------------------------ */
+/* ------------------------------- */
+/* HEADINGS                        */
+/* ------------------------------- */
+
 h1, h2, h3 {
-    color: #ffffff;
-    text-align: center;
-    margin-top: 30px;
-    margin-bottom: 20px;
     font-weight: 600;
+    color: #f0f0f0;
+    margin-top: 35px;
+    text-align: center;
 }
 
 h1 {
-    font-size: 2.6rem;
+    font-size: 2.3rem;
     letter-spacing: 1px;
 }
 
 h2 {
     font-size: 1.9rem;
-    color: #d7d7d7;
 }
 
 h3 {
     font-size: 1.4rem;
-    color: #cfcfcf;
 }
 
-/* -----------------------------------------------------------
-   LINK STYLE (Cleaner + subtle glow)
------------------------------------------------------------ */
-a {
-    color: #78aaff;                  /* soft blue accent */
-    text-decoration: none;
-    font-weight: 500;
-    transition: 0.25s ease;
-}
+/* ------------------------------- */
+/* PROJECT GRID                    */
+/* ------------------------------- */
 
-a:hover {
-    color: #a4c8ff;
-    text-shadow: 0px 0px 6px rgba(120, 170, 255, 0.5);
-}
-
-/* -----------------------------------------------------------
-   PROJECT GRID
------------------------------------------------------------ */
 .projects {
+    width: 90%;
+    max-width: 1200px;
+    margin: 50px auto;
     display: flex;
-    flex-wrap: wrap;
     justify-content: center;
+    flex-wrap: wrap;
     gap: 25px;
-    padding: 20px;
 }
 
-/* Individual Project Card */
+/* Each project container */
 .project {
-    width: 300px;
-    background: #2a2b2f;
-    border-radius: 14px;
+    background: #2a2b2f; 
+    width: 28%;
+    min-width: 260px;
     padding: 20px;
-    box-shadow: 0 0 12px rgba(0,0,0,0.3);
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
-    animation: fadeIn 0.8s ease-in;
+    border-radius: 18px;
+    box-shadow: 0px 4px 15px rgba(0,0,0,0.4);
+    transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s;
+    text-align: center;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards;
 }
 
+/* stagger animations */
+.project:nth-child(1){ animation-delay: .1s; }
+.project:nth-child(2){ animation-delay: .25s; }
+.project:nth-child(3){ animation-delay: .4s; }
+.project:nth-child(4){ animation-delay: .55s; }
+.project:nth-child(5){ animation-delay: .7s; }
+
+@keyframes fadeUp {
+    from { transform: translateY(25px); opacity: 0; }
+    to { transform: translateY(0px); opacity: 1; }
+}
+
+/* Hover animation */
 .project:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 8px 25px rgba(0,0,0,0.45);
+    transform: translateY(-8px);
+    box-shadow: 0px 8px 25px rgba(0,0,0,0.55);
+    background: #333439;
 }
 
-/* -----------------------------------------------------------
-   PROJECT IMAGE
------------------------------------------------------------ */
+/* ------------------------------- */
+/* PROJECT IMAGES                  */
+/* ------------------------------- */
+
 .project img {
-    width: 100%;
+    width: 90%;
     height: auto;
-    border-radius: 10px;
-    display: block;
-    margin: 0 auto 12px auto;
-    border: 2px solid #3f6ab4;  /* blue accent */
-    transition: 0.25s ease;
+    border-radius: 12px;
+    margin-bottom: 15px;
+    border: 2px solid #444a55;
+    transition: transform 0.3s ease;
 }
 
 .project img:hover {
-    border-color: #74a2ff;
+    transform: scale(1.03);
 }
 
-/* -----------------------------------------------------------
-   PROJECT TEXT
------------------------------------------------------------ */
+/* ------------------------------- */
+/* PARAGRAPH TEXT                  */
+/* ------------------------------- */
+
 .project p {
-    text-align: center;
-    margin-top: 10px;
-    margin-bottom: 0;
-    color: #d9d9d9;
+    color: #cccccc;
     font-size: 0.95rem;
+    padding: 0 5px;
 }
 
-/* -----------------------------------------------------------
-   GLOBAL IMAGE RULE (for resume preview, etc.)
------------------------------------------------------------ */
-img {
-    max-width: 100%;
-    display: block;
-    margin: 20px auto;
-    border-radius: 12px;
+/* ------------------------------- */
+/* LINKS                           */
+/* ------------------------------- */
+
+a {
+    color: #9bb1ff; 
+    text-decoration: none;
+    transition: color 0.25s ease;
 }
 
-/* -----------------------------------------------------------
-   CONTACT SECTION
------------------------------------------------------------ */
-.contact {
-    text-align: center;
-    padding: 30px;
-    font-size: 1.1rem;
-    color: #cfcfcf;
+a:hover {
+    color: #c9d4ff;
 }
 
-.contact a {
-    font-size: 1.15rem;
-    font-weight: 600;
+/* ------------------------------- */
+/* RESPONSIVE DESIGN               */
+/* ------------------------------- */
+
+@media screen and (max-width: 900px) {
+    .project {
+        width: 45%;
+    }
 }
 
-/* -----------------------------------------------------------
-   FOOTER
------------------------------------------------------------ */
-footer {
-    text-align: center;
-    padding: 20px;
-    color: #9c9c9c;
-    font-size: 0.9rem;
-    margin-top: 40px;
+@media screen and (max-width: 600px) {
+    .project {
+        width: 90%;
+    }
 }
