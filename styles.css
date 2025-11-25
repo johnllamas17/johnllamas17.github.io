@@ -1,148 +1,117 @@
+/* Smooth scrolling for the whole page */
+html {
+    scroll-behavior: smooth;
+}
 
+/* GLOBAL PAGE STYLING */
 body {
-    background: #1e1f22; /* dark grey like ChatGPT */
-    font-family: "Inter", "Segoe UI", Helvetica, Arial, sans-serif;
-    color: #e5e5e5; /* soft off-white */
+    background: #1e1f22; /* dark grey ChatGPT style */
+    color: #e6e6e6;      /* off-white text */
+    font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
     margin: 0;
     padding: 0;
     text-align: center;
-    line-height: 1.6;
 }
 
-/* Smooth fade-in for entire page */
-body {
-    animation: fadeIn 1.2s ease-in-out;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-/* ------------------------------- */
-/* HEADINGS                        */
-/* ------------------------------- */
-
+/* HEADINGS */
 h1, h2, h3 {
+    color: #f2f2f2;
     font-weight: 600;
-    color: #f0f0f0;
-    margin-top: 35px;
-    text-align: center;
-}
-
-h1 {
-    font-size: 2.3rem;
+    margin-top: 40px;
+    margin-bottom: 20px;
     letter-spacing: 1px;
 }
 
-h2 {
-    font-size: 1.9rem;
+/* ABOUT / SKILLS TEXT */
+p {
+    font-size: 18px;
+    line-height: 1.7;
+    max-width: 900px;
+    margin: 0 auto 25px;
+    color: #dcdcdc;
 }
 
-h3 {
-    font-size: 1.4rem;
-}
-
-/* ------------------------------- */
-/* PROJECT GRID                    */
-/* ------------------------------- */
-
-.projects {
-    width: 90%;
+/* SECTION CONTAINER — CLEAN CENTERED WIDTH */
+section {
+    width: 95%;
     max-width: 1200px;
-    margin: 50px auto;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 25px;
+    margin: auto;
 }
 
-/* Each project container */
+/* PROJECT GRID — 3 COLUMNS */
+.projects {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-top: 40px;
+    justify-items: center;
+}
+
+/* RESPONSIVE — switch to 2 columns */
+@media (max-width: 900px) {
+    .projects {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* RESPONSIVE — switch to 1 column */
+@media (max-width: 600px) {
+    .projects {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+/* PROJECT CARD STYLE */
 .project {
-    background: #2a2b2f; 
-    width: 28%;
-    min-width: 260px;
+    background: #292b2f;
     padding: 20px;
     border-radius: 18px;
-    box-shadow: 0px 4px 15px rgba(0,0,0,0.4);
-    transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s;
-    text-align: center;
-    opacity: 0;
-    animation: fadeUp 0.8s ease forwards;
-}
-
-/* stagger animations */
-.project:nth-child(1){ animation-delay: .1s; }
-.project:nth-child(2){ animation-delay: .25s; }
-.project:nth-child(3){ animation-delay: .4s; }
-.project:nth-child(4){ animation-delay: .55s; }
-.project:nth-child(5){ animation-delay: .7s; }
-
-@keyframes fadeUp {
-    from { transform: translateY(25px); opacity: 0; }
-    to { transform: translateY(0px); opacity: 1; }
-}
-
-/* Hover animation */
-.project:hover {
-    transform: translateY(-8px);
-    box-shadow: 0px 8px 25px rgba(0,0,0,0.55);
-    background: #333439;
-}
-
-/* ------------------------------- */
-/* PROJECT IMAGES                  */
-/* ------------------------------- */
-
-.project img {
     width: 90%;
+    max-width: 350px;
+    text-align: center;
+    box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+    transition: transform 0.35s ease, box-shadow 0.35s ease, background 0.3s;
+    opacity: 0;
+    animation: fadeIn 0.8s ease forwards;
+}
+
+/* FADE-IN ANIMATION */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(25px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* PROJECT CARD HOVER EFFECT */
+.project:hover {
+    transform: scale(1.05);
+    background: #2f3136;
+    box-shadow: 0 12px 25px rgba(0,0,0,0.4);
+}
+
+/* PROJECT IMAGES */
+.project img {
+    width: 100%;
     height: auto;
     border-radius: 12px;
-    margin-bottom: 15px;
-    border: 2px solid #444a55;
-    transition: transform 0.3s ease;
+    margin-bottom: 12px;
+    border: 2px solid #444;
 }
 
-.project img:hover {
-    transform: scale(1.03);
-}
-
-/* ------------------------------- */
-/* PARAGRAPH TEXT                  */
-/* ------------------------------- */
-
+/* PARAGRAPH INSIDE CARDS */
 .project p {
-    color: #cccccc;
-    font-size: 0.95rem;
-    padding: 0 5px;
+    margin: 10px 0;
+    font-size: 16px;
+    color: #d7d7d7;
 }
 
-/* ------------------------------- */
-/* LINKS                           */
-/* ------------------------------- */
-
+/* LINKS */
 a {
-    color: #9bb1ff; 
     text-decoration: none;
-    transition: color 0.25s ease;
+    color: #5aa9ff;
+    font-weight: 600;
+    transition: 0.2s;
 }
 
 a:hover {
-    color: #c9d4ff;
-}
-
-/* ------------------------------- */
-/* RESPONSIVE DESIGN               */
-/* ------------------------------- */
-
-@media screen and (max-width: 900px) {
-    .project {
-        width: 45%;
-    }
-}
-
-@media screen and (max-width: 600px) {
-    .project {
-        width: 90%;
-    }
+    color: #82c3ff;
 }
