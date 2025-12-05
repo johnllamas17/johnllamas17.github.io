@@ -1,100 +1,199 @@
-/* ===========================
-   GLOBAL STYLES
-=========================== */
-body {
-  background-color: #1e1f22;
-  color: #e8e8e8;
-  font-family: 'Inter', Arial, sans-serif;
+* {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  text-align: center;
+}
+
+html {
   scroll-behavior: smooth;
 }
 
-/* Smooth fade-in */
-section, h1, h2, h3, p, img, div {
-  animation: fadeIn 0.6s ease forwards;
-  opacity: 0;
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+    "Segoe UI", sans-serif;
+  background: #050816;              /* deep dark background */
+  color: #e5e7eb;                   /* off-white text */
+  line-height: 1.6;
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
+/* Layout wrappers -------------------------------------------------------- */
+body > h1,
+.About,
+.Skills,
+.Projects,
+.Contact {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
 }
 
+/* Headings --------------------------------------------------------------- */
 h1 {
-  font-size: 3rem;
-  margin-top: 40px;
-  color: #ffffff;
+  text-align: center;
+  font-size: 2.6rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: #f9fafb;
+  margin-top: 2rem;
+  text-shadow: 0 0 20px rgba(96, 165, 250, 0.45);
 }
 
 h2 {
-  margin-top: 40px;
-  font-size: 2rem;
-  color: #f0f0f0;
+  text-align: center;
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #f3f4f6;
+  margin-bottom: 0.75rem;
 }
 
 h3 {
-  font-size: 1.3rem;
-  margin-bottom: 10px;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #f9fafb;
+  margin-bottom: 0.75rem;
 }
 
-/* ===========================
-   PROJECT GRID LAYOUT
-=========================== */
-.project-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 35px;
-  padding: 40px;
-  width: 90%;
-  max-width: 1400px;
-  margin: auto;
+/* Paragraphs & small text ------------------------------------------------ */
+p {
+  font-size: 0.98rem;
+  color: #d1d5db;
 }
 
-/* ===========================
-   PROJECT CARD
-=========================== */
-.project-card {
-  background: #2a2b2f;
-  padding: 20px;
-  border-radius: 18px;
-  box-shadow: 0 0 20px rgba(0,0,0,0.3);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+.About p,
+.Skills p,
+.Contact p {
+  text-align: center;
+  max-width: 900px;
+  margin: 0.5rem auto 0;
 }
 
-/* Hover pop animation */
-.project-card:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 30px rgba(200, 200, 255, 0.25);
-}
-
-.project-card img {
-  width: 100%;
-  border-radius: 12px;
-  margin-bottom: 12px;
-  transition: filter 0.3s ease;
-}
-
-/* Image glow on hover */
-.project-card:hover img {
-  filter: brightness(1.15);
-}
-
-.project-card p {
-  font-size: 0.95rem;
-  line-height: 1.5;
-}
-
-/* ===========================
-   LINK STYLE
-=========================== */
+/* Links ------------------------------------------------------------------ */
 a {
-  color: #9bb8ff;
+  color: #93c5fd;
   text-decoration: none;
-  transition: color 0.3s ease;
+  font-weight: 500;
+  transition: color 0.2s ease, text-shadow 0.2s ease;
 }
 
-a:hover {
-  color: #d4e0ff;
+a:hover,
+a:focus-visible {
+  color: #bfdbfe;
+  text-shadow: 0 0 10px rgba(147, 197, 253, 0.8);
+  outline: none;
+}
+
+/* Projects grid ---------------------------------------------------------- */
+
+.Projects {
+  padding-top: 0.5rem;
+}
+
+/* flexbox grid for cards */
+.Projects .projects-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.75rem;
+}
+
+/* If you don’t have .projects-grid wrapper,
+   this will still work by targeting all .project elements inside .Projects */
+.Projects .project {
+  background: radial-gradient(circle at top left, #1f2937, #020617);
+  border-radius: 1.25rem;
+  padding: 1.5rem 1.3rem 1.75rem;
+  width: 260px;                     /* ~4 cards per row on large screens */
+  max-width: 100%;
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.7);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+
+  transition:
+    transform 0.22s ease,
+    box-shadow 0.22s ease,
+    background 0.22s ease;
+}
+
+/* Card hover / focus animation */
+.Projects .project:hover,
+.Projects .project:focus-within {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 25px 60px rgba(37, 99, 235, 0.55);
+  background: radial-gradient(circle at top left, #111827, #020617);
+}
+
+/* Images inside cards */
+.Projects .project img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 0.9rem;
+  margin-bottom: 0.9rem;
+  box-shadow: 0 10px 25px rgba(15, 23, 42, 0.9);
+}
+
+/* Text inside cards */
+.Projects .project p {
+  margin-top: 0.3rem;
+}
+
+/* Special “button-style” links in cards ---------------------------------- */
+
+.btn,
+.project a.btn {
+  display: inline-block;
+  margin-top: 0.75rem;
+  padding: 0.55rem 1.15rem;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #2563eb, #4f46e5);
+  color: #f9fafb;
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  border: none;
+}
+
+.btn:hover,
+.btn:focus-visible,
+.project a.btn:hover,
+.project a.btn:focus-visible {
+  background: linear-gradient(135deg, #60a5fa, #6366f1);
+  box-shadow: 0 0 18px rgba(96, 165, 250, 0.8);
+}
+
+/* Contact section -------------------------------------------------------- */
+.Contact {
+  padding-bottom: 3rem;
+  text-align: center;
+}
+
+.Contact h2 {
+  margin-bottom: 0.5rem;
+}
+
+.Contact p {
+  font-size: 1rem;
+}
+
+/* Responsive tweaks ------------------------------------------------------ */
+@media (max-width: 900px) {
+  .Projects .project {
+    width: 45%;      /* 2 cards per row on tablets */
+  }
+}
+
+@media (max-width: 600px) {
+  body > h1 {
+    font-size: 2.1rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  .Projects .project {
+    width: 100%;     /* 1 card per row on phones */
+  }
 }
